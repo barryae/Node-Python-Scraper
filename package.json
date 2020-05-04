@@ -1,8 +1,8 @@
 {
-  "name": "web-scraper",
+  "name": "node-python-scraper",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This app scrapes Wikipedia using an express server running a Python web-scraper. This is a starting point for a nlp and analytics service.",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +12,14 @@
   "dependencies": {
     "express": "^4.17.1",
     "flatted": "^2.0.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barryae/Node-Python-Scraper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/barryae/Node-Python-Scraper/issues"
+  },
+  "homepage": "https://github.com/barryae/Node-Python-Scraper#readme"
 }

@@ -19,17 +19,7 @@ scrapeButton.addEventListener('click', (e) => {
     console.log('click')
     let query = input.value
     contentBox.innerHTML = loader
-    if (htmlFormat.checked) {
-        fetch('/scrape?search=' + query + "&format=html")
-            .then(response => {
-                return response.text()
-            })
-            .then(result => {
-                localStorage.setItem('lastSearch', result)
-                contentBox.innerHTML = result;
-                // contentBox.append(result);
-            })
-    } if (plainTextFormat.checked) {
+    if (plainTextFormat.checked) {
         fetch('/scrape?search=' + query + "&format=plain")
             .then(response => {
                 return response.text()

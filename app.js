@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { spawn } = require('child_process');
+
 
 app.use(express.static('front'))
 app.use(express.urlencoded({ extended: true }));
@@ -15,11 +15,20 @@ app.get('/wiki/:search', (req, res) => {
 })
 
 app.get('/scrape?', (req, res) => {
-    const pyScrape = spawn('python', ['./web-scraper.py', req.query.search, req.query.format]);
+    const { spawn } = require('child_process');
+    const pyScrape = spawn('python3', ['./web-scraper.py', req.query.search, req.query.format]);
+    console.log("Route accessed")
     pyScrape.stdout.once('data', data => {
         console.log('Scraping Finished!')
         res.send(data)
     })
+    pyScrape.stderr.on('data', data => {
+        console.log(`error:${data}`)
+    })
+    pyScrape.on('close', () => {
+        console.log('Closed')
+    })
+
 })
 
 app.listen(3000, () => console.log('App listening on port 3000'))
